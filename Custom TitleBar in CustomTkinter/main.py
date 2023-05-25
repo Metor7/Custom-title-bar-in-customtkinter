@@ -2,7 +2,7 @@ import customtkinter
 from ctypes import windll
 from PIL import Image
 
-customtkinter.set_appearance_mode("light") # Dark or Light
+customtkinter.set_appearance_mode("dark") # Dark or Light
 customtkinter.set_default_color_theme("blue") # Blue, Dark-blue, Green
 
 class App(customtkinter.CTk):
@@ -12,10 +12,10 @@ class App(customtkinter.CTk):
         # Setting application variables:
         self.window_title = 'Custom Title Bar in CustomTkinter by Metor' # Change here title of your app
 
-        self.put_icon = False # If you want have icon on your title bar, change that bool from False to True and save your icon(.png) in: assets/images/
+        self.put_icon = True # If you want have icon on your title bar, change that bool from False to True and save your icon(.png) in: assets/images/
         self.dark_mode_icon_path = 'assets\images\my_icon_light.png' # Here put path to light image(for dark mode) for example: assets/images/<Your light icon name>.png
         self.light_mode_icon_path = 'assets\images\my_icon_dark.png' # Here put path to dark image(for light mode) for example: assets/images/<Your dark icon name>.png
-        # You can put same path to both variables if you want to have same icon in dark and light theme
+        # You can put same path to both variables if toy want to have same icon in dark and light theme
 
         self.maximized = False
 
@@ -35,9 +35,12 @@ class App(customtkinter.CTk):
         if self.theme == 'Dark':
             self.title_bar_color = '#3b3a3a'
             self.text_color = 'white'
-        else:
+        elif self.theme == 'Light':
             self.title_bar_color = '#b3b4b5'
-            self.text_color = 'black'
+            self.text_color = 'black'            
+        else:
+            self.title_bar_color = '#000000'
+            self.text_color = 'white'
 
         self.w_width = self.winfo_width()
         self.title_bar = customtkinter.CTkFrame(self, fg_color=self.title_bar_color, width=self.w_width, height=28, corner_radius=0)
