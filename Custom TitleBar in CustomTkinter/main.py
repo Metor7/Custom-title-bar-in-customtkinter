@@ -12,7 +12,7 @@ class App(customtkinter.CTk):
         # Setting application variables:
         self.window_title = 'Custom Title Bar in CustomTkinter by Metor' # Change here title of your app
 
-        self.put_icon = True # If you want have icon on your title bar, change that bool from False to True and save your icon(.png) in: assets/images/
+        self.put_icon = False # If you want have icon on your title bar, change that bool from False to True and save your icon(.png) in: assets/images/
         self.dark_mode_icon_path = 'assets\images\my_icon_light.png' # Here put path to light image(for dark mode) for example: assets/images/<Your light icon name>.png
         self.light_mode_icon_path = 'assets\images\my_icon_dark.png' # Here put path to dark image(for light mode) for example: assets/images/<Your dark icon name>.png
         # You can put same path to both variables if toy want to have same icon in dark and light theme
@@ -28,7 +28,7 @@ class App(customtkinter.CTk):
         self.resizable(False, False)
         self.title(self.window_title)
         self.overrideredirect(True)
-        self.attributes('-topmost', True, '-alpha', 0.9)
+        #self.attributes('-topmost', True, '-alpha', 0.9)
 
         # Creating title bar:
         self.w_width = self.winfo_width()
@@ -65,6 +65,8 @@ class App(customtkinter.CTk):
             windll.user32.ShowWindow(hwnd, 0 if hide else 6)           
 
         # Creating buttons, label and icon on title bar:
+        
+
         self.minimize_button = customtkinter.CTkButton(self.title_bar, text='  🗕  ', command=minimize, font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color='#3b3a3a', hover_color='#7c7d7c')
         self.minimize_button.grid(row=0, column=1, sticky='w')
 
@@ -90,8 +92,8 @@ class App(customtkinter.CTk):
         # Put your code between the lines:
         # ――――――――――
 
-        self.example_button = customtkinter.CTkButton(self.main_frame, text='Your app here!', width=130)
-        self.example_button.grid(row=0, column=0, padx=20, pady=20)
+        #self.example_button = customtkinter.CTkButton(self.main_frame, text='Your app here!', width=130)
+        #self.example_button.grid(row=0, column=0, padx=20, pady=20)
 
         # ――――――――――
 
