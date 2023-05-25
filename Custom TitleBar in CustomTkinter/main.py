@@ -99,12 +99,12 @@ class App(customtkinter.CTk):
 
 
         # Put your code between the lines:
-        # ――――――――――
+        # ――――――――――――――――――――
 
         #self.example_button = customtkinter.CTkButton(self.main_frame, text='Your app here!', width=130)
         #self.example_button.grid(row=0, column=0, padx=20, pady=20)
 
-        # ――――――――――
+        # ――――――――――――――――――――
 
         def get_pos(event):
             if self.maximized == False:
