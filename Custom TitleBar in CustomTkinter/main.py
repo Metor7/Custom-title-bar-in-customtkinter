@@ -15,7 +15,7 @@ class App(customtkinter.CTk):
         self.put_icon = False # If you want have icon on your title bar, change that bool from False to True and save your icon(.png) in: assets/images/
         self.dark_mode_icon_path = 'assets\images\my_icon_light.png' # Here put path to light image(for dark mode) for example: assets/images/<Your light icon name>.png
         self.light_mode_icon_path = 'assets\images\my_icon_dark.png' # Here put path to dark image(for light mode) for example: assets/images/<Your dark icon name>.png
-        # You can put same path to both variables if toy want to have same icon in dark and light theme
+        # You can put same path to both variables if you want to have same icon in dark and light theme
 
         self.maximized = False
 
