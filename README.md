@@ -7,3 +7,4 @@
 - Window icon
 - Movable window
 - Dark and Light theme suported
+- Easy configuration
