@@ -9,3 +9,4 @@
 - Movable window
 - Dark, Light and your own theme suported
 - Easy configuration
+## Configure your title bar:
