@@ -10,4 +10,3 @@
 - Dark and Light appearance mode supported
 - Blue, Dark-blue, Green and your own theme supported
 - Easy and fast configuration
-## Configure your title bar:
