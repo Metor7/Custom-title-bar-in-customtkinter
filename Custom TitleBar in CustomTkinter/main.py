@@ -2,7 +2,7 @@ import customtkinter
 from ctypes import windll
 from PIL import Image
 
-customtkinter.set_appearance_mode("dark") # Dark or Light
+customtkinter.set_appearance_mode("Light") # Dark or Light
 customtkinter.set_default_color_theme("blue") # Blue, Dark-blue, Green
 
 class App(customtkinter.CTk):
@@ -35,12 +35,19 @@ class App(customtkinter.CTk):
         if self.theme == 'Dark':
             self.title_bar_color = '#3b3a3a'
             self.text_color = 'white'
+            self.hover_button_color = '#7c7d7c'
+            self.hover_close_button_color = '#ff4d4d'
         elif self.theme == 'Light':
-            self.title_bar_color = '#b3b4b5'
-            self.text_color = 'black'            
+            self.title_bar_color = '#bebebe'
+            self.text_color = 'black'
+            self.hover_button_color = '#b3b3b3'
+            self.hover_close_button_color = '#e85f5f'            
         else:
-            self.title_bar_color = '#000000'
-            self.text_color = 'white'
+            self.title_bar_color = '#000000' # If you are using your own theme, set the color hex here (to match your theme with title bar) 
+            self.text_color = 'white' # Here change color of text on title bar
+            self.hover_button_color = '#000000' # Here change hover color of buttons for your own theme
+            self.hover_close_button_color = '#ff4d4d'    
+            print('Warning: You use your own color theme, configure color of title bar in line: 45')
 
         self.w_width = self.winfo_width()
         self.title_bar = customtkinter.CTkFrame(self, fg_color=self.title_bar_color, width=self.w_width, height=28, corner_radius=0)
@@ -76,13 +83,13 @@ class App(customtkinter.CTk):
             windll.user32.ShowWindow(hwnd, 0 if hide else 6)           
 
         # Creating buttons, label and icon on title bar:
-        self.minimize_button = customtkinter.CTkButton(self.title_bar, text='  🗕  ', command=minimize, font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color=self.title_bar_color, hover_color='#7c7d7c', text_color=self.text_color)
+        self.minimize_button = customtkinter.CTkButton(self.title_bar, text='  🗕  ', command=minimize, font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color=self.title_bar_color, hover_color=self.hover_button_color, text_color=self.text_color)
         self.minimize_button.grid(row=0, column=1, sticky='w')
 
-        self.expand_button = customtkinter.CTkButton(self.title_bar, text='  🗖  ', command=maximize_me,font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color=self.title_bar_color, hover_color='#7c7d7c', text_color=self.text_color)
+        self.expand_button = customtkinter.CTkButton(self.title_bar, text='  🗖  ', command=maximize_me,font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color=self.title_bar_color, hover_color=self.hover_button_color, text_color=self.text_color)
         self.expand_button.grid(row=0, column=2, sticky='e')
 
-        self.close_button = customtkinter.CTkButton(self.title_bar, text='  🗙  ', command=self.destroy, font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color=self.title_bar_color, hover_color='#ff4d4d', text_color=self.text_color)
+        self.close_button = customtkinter.CTkButton(self.title_bar, text='  🗙  ', command=self.destroy, font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color=self.title_bar_color, hover_color=self.hover_close_button_color, text_color=self.text_color)
         self.close_button.grid(row=0, column=3, sticky='e')
 
         self.title_bar_title = customtkinter.CTkLabel(self.title_bar, text=self.window_title, fg_color=self.title_bar_color, font=self.small_helvetica_font)
@@ -99,12 +106,12 @@ class App(customtkinter.CTk):
 
 
         # Put your code between the lines:
-        # ――――――――――――――――――――
+        # ――――――――――
 
         #self.example_button = customtkinter.CTkButton(self.main_frame, text='Your app here!', width=130)
         #self.example_button.grid(row=0, column=0, padx=20, pady=20)
 
-        # ――――――――――――――――――――
+        # ――――――――――
 
         def get_pos(event):
             if self.maximized == False:
