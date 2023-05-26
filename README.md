@@ -7,5 +7,5 @@
 - Your own title of app
 - Window icon
 - Movable window
-- Dark and Light theme suported
+- Dark, Light and your own theme suported
 - Easy configuration
