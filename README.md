@@ -7,6 +7,7 @@
 - Your own title of app
 - Window icon
 - Movable window
-- Dark, Light and your own theme suported
+- Dark and Light appearance mode supported
+- Blue, Dark-blue, Green and your own theme supported
 - Easy configuration
 ## Configure your title bar:
