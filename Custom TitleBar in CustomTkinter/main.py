@@ -32,12 +32,12 @@ class App(customtkinter.CTk):
 
         # Creating title bar:
         self.theme = customtkinter.get_appearance_mode()
-        if self.theme == 'Dark':
+        if self.theme.lower() == 'dark':
             self.title_bar_color = '#3b3a3a'
             self.text_color = 'white'
             self.hover_button_color = '#7c7d7c'
             self.hover_close_button_color = '#ff4d4d'
-        elif self.theme == 'Light':
+        elif self.theme.lower() == 'light':
             self.title_bar_color = '#bebebe'
             self.text_color = 'black'
             self.hover_button_color = '#b3b3b3'
