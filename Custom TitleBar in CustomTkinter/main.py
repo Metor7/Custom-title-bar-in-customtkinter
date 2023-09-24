@@ -11,17 +11,17 @@ class App(customtkinter.CTk):
 
         # Setting application variables:
         self.window_title = 'Custom Title Bar in CustomTkinter by Metor' # Change here title of your app
-
+        self.put_minimize_button = True # If u want to disable minimize button on titlebar change that to False
+        self.put_maximize_button = True # If u want to disable maximize(fullscreen) button on titlebar change that to False
         self.put_icon = False # If you want have icon on your title bar, change that bool from False to True and save your icon(.png) in: assets/images/
         self.dark_mode_icon_path = r'assets\images\my_icon_light.png' # Here put path to light image(for dark mode) for example: assets/images/<Your light icon name>.png
         self.light_mode_icon_path = r'assets\images\my_icon_dark.png' # Here put path to dark image(for light mode) for example: assets/images/<Your dark icon name>.png
-        # You can put same path to both variables if toy want to have same icon in dark and light theme
+        # You can put same path to both variables if you want to have same icon in dark and light theme
 
-        self.maximized = False
-
-        # Creating fonts:
         self.small_calibri_font = customtkinter.CTkFont(family='Calibri', size=15) # Font of titlebar icons
         self.small_helvetica_font = customtkinter.CTkFont(family='Helvetica', size=12) # Font of app title
+
+        self.maximized = False
 
         # Configuring window:
         self.geometry(f"{550}x{350}")
@@ -84,11 +84,17 @@ class App(customtkinter.CTk):
 
         # Creating buttons, label and icon on title bar:
         self.minimize_button = customtkinter.CTkButton(self.title_bar, text='  🗕  ', command=minimize, font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color=self.title_bar_color, hover_color=self.hover_button_color, text_color=self.text_color)
-        self.minimize_button.grid(row=0, column=1, sticky='w')
+        if self.put_minimize_button:
+            self.minimize_button.grid(row=0, column=1, sticky='w')
+        else:
+            print("Info: Put minimize button is False") 
 
         self.expand_button = customtkinter.CTkButton(self.title_bar, text='  🗖  ', command=maximize_me,font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color=self.title_bar_color, hover_color=self.hover_button_color, text_color=self.text_color)
-        self.expand_button.grid(row=0, column=2, sticky='e')
-
+        if self.put_minimize_button:
+            self.expand_button.grid(row=0, column=2, sticky='e')
+        else:
+            print("Info: Put maximize(fullscreen or expand) button is False") 
+        
         self.close_button = customtkinter.CTkButton(self.title_bar, text='  🗙  ', command=self.destroy, font=self.small_calibri_font, height=28, width=45, corner_radius=0, fg_color=self.title_bar_color, hover_color=self.hover_close_button_color, text_color=self.text_color)
         self.close_button.grid(row=0, column=3, sticky='e')
 
@@ -98,6 +104,8 @@ class App(customtkinter.CTk):
         if self.put_icon == True:
             self.app_icon = customtkinter.CTkImage(light_image=Image.open(self.light_mode_icon_path), dark_image=Image.open(self.dark_mode_icon_path), size=(15, 15))
             self.title_bar_title.configure(image=self.app_icon, compound='left', text=(f' {self.window_title}'))
+        else:
+            print("Info: Put icon on tiitlebar is False") 
 
         # Creating main frame and your main app:
         self.main_frame = customtkinter.CTkFrame(self, bg_color='#1f1e1e', corner_radius=0, height=422, width=650)
