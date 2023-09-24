@@ -2,7 +2,7 @@ import customtkinter
 from ctypes import windll
 from PIL import Image
 
-customtkinter.set_appearance_mode("Light") # Dark or Light
+customtkinter.set_appearance_mode("Dark") # Dark or Light
 customtkinter.set_default_color_theme("blue") # Blue, Dark-blue, Green
 
 class App(customtkinter.CTk):
