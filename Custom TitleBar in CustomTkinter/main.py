@@ -2,7 +2,7 @@ import customtkinter
 from ctypes import windll
 from PIL import Image
 
-customtkinter.set_appearance_mode("Dark") # Dark or Light
+customtkinter.set_appearance_mode("Light") # Dark or Light
 customtkinter.set_default_color_theme("blue") # Blue, Dark-blue, Green
 
 class App(customtkinter.CTk):
@@ -13,26 +13,25 @@ class App(customtkinter.CTk):
         self.window_title = 'Custom Title Bar in CustomTkinter by Metor' # Change here title of your app
 
         self.put_icon = False # If you want have icon on your title bar, change that bool from False to True and save your icon(.png) in: assets/images/
-        self.dark_mode_icon_path = 'assets\images\my_icon_light.png' # Here put path to light image(for dark mode) for example: assets/images/<Your light icon name>.png
-        self.light_mode_icon_path = 'assets\images\my_icon_dark.png' # Here put path to dark image(for light mode) for example: assets/images/<Your dark icon name>.png
+        self.dark_mode_icon_path = r'assets\images\my_icon_light.png' # Here put path to light image(for dark mode) for example: assets/images/<Your light icon name>.png
+        self.light_mode_icon_path = r'assets\images\my_icon_dark.png' # Here put path to dark image(for light mode) for example: assets/images/<Your dark icon name>.png
         # You can put same path to both variables if toy want to have same icon in dark and light theme
 
         self.maximized = False
 
         # Creating fonts:
-        self.small_calibri_font = customtkinter.CTkFont(family='Calibri', size=15)
-        self.small_helvetica_font = customtkinter.CTkFont(family='Helvetica', size=12)
+        self.small_calibri_font = customtkinter.CTkFont(family='Calibri', size=15) # Font of titlebar icons
+        self.small_helvetica_font = customtkinter.CTkFont(family='Helvetica', size=12) # Font of app title
 
         # Configuring window:
         self.geometry(f"{550}x{350}")
         self.resizable(False, False)
         self.title(self.window_title)
         self.overrideredirect(True)
-        #self.attributes('-topmost', True, '-alpha', 0.9)
 
         # Creating title bar:
         self.theme = customtkinter.get_appearance_mode()
-        if self.theme() == 'Dark':
+        if self.theme == 'Dark':
             self.title_bar_color = '#3b3a3a'
             self.text_color = 'white'
             self.hover_button_color = '#7c7d7c'
@@ -46,8 +45,8 @@ class App(customtkinter.CTk):
             self.title_bar_color = '#000000' # If you are using your own theme, set the color hex here (to match your theme with title bar) 
             self.text_color = 'white' # Here change color of text on title bar
             self.hover_button_color = '#000000' # Here change hover color of buttons for your own theme
-            self.hover_close_button_color = '#ff4d4d'    
-            print('Warning: You use your own color theme, configure color of title bar in line: 45')
+            self.hover_close_button_color = '#ff4d4d'  
+            print('Warning: Detected your own color theme, configure color of title bar in line: 45')
 
         self.w_width = self.winfo_width()
         self.title_bar = customtkinter.CTkFrame(self, fg_color=self.title_bar_color, width=self.w_width, height=28, corner_radius=0)
@@ -59,6 +58,7 @@ class App(customtkinter.CTk):
         self.s_height = self.winfo_screenheight()
         self.title_bar_height = self.title_bar.winfo_height()
         self.main_frame_maximized_height = self.s_height - self.title_bar_height
+
         def maximize_me():
             if self.maximized == False:
                 self.overrideredirect(False)
@@ -106,12 +106,12 @@ class App(customtkinter.CTk):
 
 
         # Put your code between the lines:
-        # ――――――――――
+        # ――――――――――――――――――――
 
-        #self.example_button = customtkinter.CTkButton(self.main_frame, text='Your app here!', width=130)
-        #self.example_button.grid(row=0, column=0, padx=20, pady=20)
+        self.example_button = customtkinter.CTkButton(self.main_frame, text='Your app here!', width=130)
+        self.example_button.grid(row=0, column=0, padx=20, pady=20)
 
-        # ――――――――――
+        # ――――――――――――――――――――
 
         def get_pos(event):
             if self.maximized == False:
